@@ -42,7 +42,7 @@ export default function Footer() {
             <h2 className="text-3xl font-bold mb-6 md:mb-0 text-center md:text-left">
               Ready to Build a Coding Culture?
               <br />
-              <span className="text-orange-200">Let's Connect Today!</span>
+              <span className="text-orange-200">Let &apos; s Connect Today!</span>
             </h2>
             <div className="space-y-4 md:space-y-0 md:space-x-4">
               <Button
