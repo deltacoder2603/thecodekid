@@ -12,7 +12,7 @@ export const HoverEffect = ({
   }[]; // Removed link from type definition
   className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <div
