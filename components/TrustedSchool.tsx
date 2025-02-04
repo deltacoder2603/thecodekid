@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { NumberTicker } from "./ui/number-ticker";
 
@@ -27,7 +28,6 @@ export default function TrustedSchools() {
     }
 
     let interval: NodeJS.Timeout;
-
     if (width > 0) {
       interval = setInterval(() => {
         controls.start({ x: -width, transition: { duration: 12, ease: "linear" } })
@@ -62,7 +62,16 @@ export default function TrustedSchools() {
               key={`${school.id}-${index}`}
               className="w-64 h-48 p-6 bg-white shadow-lg rounded-lg text-center flex flex-col items-center justify-center"
             >
-              <img src={school.logo} alt={school.name} className="w-40 h-20 object-contain" />
+              <div className="relative w-40 h-20">
+                <Image
+                  src={school.logo}
+                  alt={school.name}
+                  fill
+                  className="object-contain"
+                  sizes="160px"
+                  priority={index < 5} // Prioritize loading first set of images
+                />
+              </div>
               <p className="mt-4 font-semibold text-gray-700">{school.name}</p>
             </div>
           ))}
