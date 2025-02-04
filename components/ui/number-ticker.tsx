@@ -29,10 +29,11 @@ export function NumberTicker({
   const isInView = useInView(ref, { once: true, margin: "0px" });
 
   useEffect(() => {
-    isInView &&
+    if (isInView) { // Corrected: Using an if statement
       setTimeout(() => {
         motionValue.set(direction === "down" ? 0 : value);
       }, delay * 1000);
+    }
   }, [motionValue, isInView, delay, value, direction]);
 
   useEffect(
@@ -45,7 +46,7 @@ export function NumberTicker({
           }).format(Number(latest.toFixed(decimalPlaces)));
         }
       }),
-    [springValue, decimalPlaces],
+    [springValue, decimalPlaces]
   );
 
   return (
@@ -53,7 +54,7 @@ export function NumberTicker({
       ref={ref}
       className={cn(
         "inline-block tabular-nums tracking-wider text-black dark:text-white",
-        className,
+        className
       )}
       {...props}
     />
