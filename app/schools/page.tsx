@@ -237,9 +237,13 @@ function App() {
               viewport={{ once: true }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1503676260728-" alt="Modern classroom" width={600} height={400} 
-                className="rounded-lg shadow-xl" 
-                />
+   src="https://images.unsplash.com/photo-1503676260728-"
+   alt="Modern classroom"
+   width={600}
+   height={400}
+   className="rounded-lg shadow-xl" 
+/>
+
             </motion.div>
           </div>
         </div>
@@ -253,19 +257,22 @@ function App() {
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
    return (
-    <motion.div
-      whileHover={{ y:-5 }} 
-    	className= "bg-white p6 rounded-xl shadow-lg transition-shadow hover-shadow-xl" 
-    	> 
-    	<div 
-        	classname= "w12 h12 bg-orange100 rounded-lg flex items-center justify-center text-orange600 mb4"> 
-        	{icon} 
-    	</div> 
-    	<h3 classname= "text-xl font-semibold text-orange600 mb2"> {title} 
-    	</h3> 
-    	<p classname= "text-gray600"> {description} 
-    	</p> 
-  	</motion.div> 
+      <motion.div
+         whileHover={{ y: -5 }} 
+         className="bg-white p-6 rounded-xl shadow-lg transition-shadow hover:shadow-xl"
+      > 
+         <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4"> 
+            {icon} 
+         </div> 
+         <h3 className="text-xl font-semibold text-orange-600 mb-2"> 
+            {title} 
+         </h3> 
+         <p className="text-gray-600"> 
+            {description} 
+         </p> 
+      </motion.div> 
+   );
 }
+
 
 export default App;
