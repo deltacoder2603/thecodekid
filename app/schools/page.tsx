@@ -236,7 +236,7 @@ function App() {
               viewport={{ once: true }}
             >
               <Image
-   src="https://images.unsplash.com/photo-1503676260728-"
+   src="/dum2.png"
    alt="Modern classroom"
    width={600}
    height={400}
