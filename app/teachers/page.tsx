@@ -4,7 +4,7 @@ import { useState } from "react";
 import ReactPlayer from "react-player";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight, Play, ArrowRight } from "lucide-react"
+import { Play, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import Navbar from "@/components/Navbar"
