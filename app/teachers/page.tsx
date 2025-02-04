@@ -291,7 +291,7 @@ export default function Page() {
               </motion.div>
               <motion.div className="mt-8 text-center">
                 <p className="text-lg text-orange-800 mb-3">
-                  'Ever since we &quot;ve started using CodeKid techniques, our students have started speaking English more fluently.'
+                  &quot; Ever since we &quot;ve started using CodeKid techniques, our students have started speaking English more fluently. &quot;
                 </p>
                 <p className="text-base font-semibold text-orange-950">Jessica Jones</p>
                 <p className="text-sm text-orange-700">BCTF Teacher,Stanford School,Delhi</p>
