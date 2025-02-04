@@ -10,11 +10,11 @@ interface School {
 }
 
 const schools: School[] = [
-  { id: 1, name: "Sulochanadevi Singhania School", logo: "https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg" },
-  { id: 2, name: "Sunitidevi Singhania School", logo: "https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg" },
-  { id: 3, name: "Century Matriculation School", logo: "https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg" },
-  { id: 4, name: "DAV Collegiate School Lachipur", logo: "https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg" },
-  { id: 5, name: "Scholars Public School", logo: "https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg" },
+  { id: 1, name: "Sulochanadevi Singhania School", logo: "/schoollogo.png" },
+  { id: 2, name: "Sunitidevi Singhania School", logo: "/schoollogo.png" },
+  { id: 3, name: "Century Matriculation School", logo: "/schoollogo.png" },
+  { id: 4, name: "DAV Collegiate School Lachipur", logo: "/schoollogo.png" },
+  { id: 5, name: "Scholars Public School", logo: "/schoollogo.png" },
 ];
 
 export default function TrustedSchools() {
