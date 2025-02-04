@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
+import Link from "next/link"
+import Image from "next/image"
 
 export default function Page() {
   return (
@@ -14,7 +16,7 @@ export default function Page() {
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative w-full min-h-screen flex items-center justify-center p-4 overflow-hidden">
-          <img src="/bg4.png" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
+          <Image src="/bg4.png" alt="Background" layout="fill" objectFit="cover" className="absolute inset-0" />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -41,90 +43,6 @@ export default function Page() {
               Explore Features
               <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
-          </motion.div>
-        </section>
-
-        {/* Key Highlights Section */}
-        <section id="key-highlights" className="py-20 px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="container max-w-6xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-4 text-center">
-              Key highlights of the <span className="text-orange-400">NEP 2020</span>
-            </h2>
-            <p className="text-black text-center mb-12 max-w-3xl mx-auto">
-              The NEP 2020 sets forth a vision for transforming the Indian education system, focusing on quality,
-              accessibility, equity, and lifelong learning.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {keyHighlights.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="p-6 h-full bg-white/10 hover:bg-white/[0.15] hover:shadow-xl transition-colors border-orange-500/20">
-                    <div className="flex items-center mb-4">
-                      {feature.icon}
-                      <h3 className="text-xl font-semibold text-orange-400 ml-3">{feature.title}</h3>
-                    </div>
-                    <ul className="space-y-2">
-                      {feature.points.map((point, i) => (
-                        <li key={i} className="text-black flex items-start">
-                          <span className="text-orange-400 mr-2">•</span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Teacher Development Section */}
-        <section className="py-20 px-4 bg-orange-100">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="container max-w-6xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center">
-              Teacher Training and <span className="text-orange-500">Professional Development</span> Framework
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teacherDev.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="p-6 h-full bg-white hover:bg-orange-50 transition-colors border-orange-500/20">
-                    <div className="text-4xl font-bold text-orange-400 mb-4">{String(index + 1).padStart(2, "0")}</div>
-                    <h3 className="text-xl font-semibold text-orange-500 mb-4">{item.title}</h3>
-                    <ul className="space-y-2">
-                      {item.points.map((point, i) => (
-                        <li key={i} className="text-black flex items-start">
-                          <span className="text-orange-400 mr-2">•</span>
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </section>
 
@@ -160,14 +78,14 @@ export default function Page() {
             <div className="space-y-4">
               <p className="text-lg">
                 Reference Link:{" "}
-                <a
+                <Link
                   href="https://www.education.gov.in/"
                   className="text-blue-600 hover:text-blue-800 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   https://www.education.gov.in/
-                </a>
+                </Link>
               </p>
 
               <div className="text-center space-y-4">
@@ -193,125 +111,3 @@ export default function Page() {
     </>
   )
 }
-
-const keyHighlights = [
-  {
-    title: "Early Childhood Care and Education",
-    icon: <GraduationCap className="w-6 h-6 text-orange-400" />,
-    points: [
-      "Ensures universal access to high-quality education at an early stage",
-      "Fosters creativity and teamwork in students",
-      "Facilitate students' physical, socio-emotional and cognitive development",
-    ],
-  },
-  {
-    title: "School Education Structure",
-    icon: <BookOpen className="w-6 h-6 text-orange-400" />,
-    points: [
-      "5+3+3+4 curricular structure",
-      "Pre-primary education brought under formal education",
-      "Reforms in the school structure as per teaching-learning requirements",
-    ],
-  },
-  {
-    title: "Multidisciplinary and Holistic Education",
-    icon: <Brain className="w-6 h-6 text-orange-400" />,
-    points: [
-      "Experiential Learning in Classrooms",
-      "Integration of subject knowledge across streams",
-      "Emphasis on concept clarity over rote learning",
-    ],
-  },
-  {
-    title: "Technology in Education",
-    points: [
-      "Promote digital literacy",
-      "Integrate EdTech tools in classroom learning",
-      "Blended teaching-learning approaches",
-    ],
-  },
-  {
-    title: "Flexibility in Curriculum",
-    points: [
-      "Offers students a choice in subjects",
-      "'Less is more' approach highlighting important concepts",
-      "Includes subjects based on interests",
-    ],
-  },
-  {
-    title: "Vocational Education",
-    points: [
-      "Gain practical experience in chosen career path",
-      "Attain employment opportunities",
-      "Vocational courses to be made available online",
-    ],
-  },
-  {
-    title: "Formative Evaluation and Testing",
-    points: [
-      "Project based evaluation",
-      "Progress card highlighting overall growth",
-      "Testing based on core concept knowledge",
-    ],
-  },
-  {
-    title: "Language Policy",
-    points: [
-      "Emphasizes the importance of local language in foundational education",
-      "Local medium of instruction till grade 5",
-      "Inclusion of at least 2 languages in the curriculum",
-    ],
-  },
-  {
-    title: "Inclusive Education",
-    points: [
-      "Equal learning opportunities",
-      "Infrastructure support for schools",
-      "Accommodates diverse learning needs",
-    ],
-  },
-]
-
-const teacherDev = [
-  {
-    title: "Continuous Professional Development",
-    points: ["Helps enhance teaching approaches", "Training programs and workshops for", "Minimum CPD of 50 hours"],
-  },
-  {
-    title: "Focus on Experiential Learning",
-    points: [
-      "Teachers create hands-on learning opportunities",
-      "Helps teachers develop 21st century skills in students",
-      "Promote practical teaching in the classroom",
-    ],
-  },
-  {
-    title: "Teaching with Technology",
-    points: [
-      "Integrating technology with teaching methods",
-      "Suggest new approaches to teaching in the classroom",
-      "Using technology as a teaching aid",
-    ],
-  },
-  {
-    title: "Integrated Training Programs",
-    points: ["4 year B.Ed program", "Teacher Eligibility Tests (TETs)", "teaching skills"],
-  },
-  {
-    title: "Professional Ethics",
-    points: [
-      "Uphold professional integrity",
-      "Respectful relationship with students",
-      "Follow educational ethics in the classroom",
-    ],
-  },
-  {
-    title: "Assessment Reforms and Teacher Autonomy",
-    points: [
-      "Teachers should apply unique assessment techniques",
-      "Freedom to implement quality teaching approaches",
-      "Competency-based assessments",
-    ],
-  },
-]
-
