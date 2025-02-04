@@ -208,21 +208,21 @@ export default function Page() {
                     description:
                       "Readily available teaching tools and helpful resources to make teaching easy and effective.",
                     image:
-                      "https://leadschool.in/wp-content/uploads/2022/09/Simplify-teaching-for-teachers.png",
+                      "/fet1.png",
                   },
                   {
                     title: "Make every teacher, an excellent teacher",
                     description:
                       "Teachers are continuously trained & mentored by our dedicated academic experts through training workshops and feedback sessions",
                     image:
-                      "https://leadschool.in/wp-content/uploads/2022/09/Make-every-teacher-an-excellent-teacher-.png",
+                      "/fet2.png",
                   },
                   {
                     title: "Access to network of 50K+ excellent teachers",
                     description:
                       "Connect, learn & share best practices by joining the largest network of 50,000+ CodeKid Certified Excellent teachers and expert faculty",
                     image:
-                      "https://leadschool.in/wp-content/uploads/2022/09/Access-to-network-of-25K-excellent-teachers.png",
+                      "/fet3.png",
                   },
                 ].map((feature, index) => (
                   <motion.div key={index} variants={fadeIn} whileHover={{ y: -10 }} className="group">
