@@ -1,6 +1,7 @@
 import Link from "next/link"
+import Image from "next/image"
 import type { Event } from "@/types/Event"
-import type React from "react" // Import React
+import type React from "react"
 
 interface FeaturedEventCardProps {
   event: Event
@@ -11,11 +12,13 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) => {
     <div className="group bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl mb-8">
       <div className="flex flex-col lg:flex-row">
         {/* Image container - Responsive height */}
-        <div className="relative w-full lg:w-1/2 overflow-hidden">
-          <img
+        <div className="relative w-full lg:w-1/2 h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
+          <Image
             src={event.image || "/placeholder.svg"}
             alt={event.title}
-            className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
@@ -44,4 +47,3 @@ const FeaturedEventCard: React.FC<FeaturedEventCardProps> = ({ event }) => {
 }
 
 export default FeaturedEventCard
-
