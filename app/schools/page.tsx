@@ -5,11 +5,11 @@ import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, 
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Link from 'next/link'; // Import Link from next/link
-import Image from 'next/image'; // Import Image from next/image
+import Link from 'next/link'; 
+import Image from 'next/image'; 
 
 interface FeatureCardProps {
-  icon: any;
+  icon: string;
   title: string;
   description: string;
 }
@@ -77,7 +77,7 @@ function App() {
             Grow your school with <span className='text-orange-500'>CodeKid</span>
           </h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Upgrade your school with the best tech-based solutions. CodeKid's International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
+            Upgrade your school with the best tech-based solutions. CodeKid &apos; s International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
           </p>
         </motion.div>
 
