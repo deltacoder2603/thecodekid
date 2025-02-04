@@ -31,17 +31,17 @@ const stats = [
 const projects = [
   {
     title: 'AI Weather Predictor',
-    image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=500',
+    image: '/proj1.png',
     author: 'Team Storm',
   },
   {
     title: 'Smart Garden Monitor',
-    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=500',
+    image: '/proj2.png',
     author: 'Green Thumbs',
   },
   {
     title: 'Educational Game App',
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=500',
+    image: '/proj3.png',
     author: 'Learning Lions',
   },
 ];
