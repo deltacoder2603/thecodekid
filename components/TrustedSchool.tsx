@@ -39,7 +39,7 @@ export default function TrustedSchools() {
   }, [width, controls]);
 
   return (
-    <>
+    <div>
       <div>
         <p className='text-3xl pl-[50px] pt-[50px] font-bold'>
           Trusted by <NumberTicker
@@ -77,6 +77,6 @@ export default function TrustedSchools() {
           ))}
         </motion.div>
       </div>
-    </>
+    </div>
   );
 }

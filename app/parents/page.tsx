@@ -36,14 +36,14 @@ export default function Home() {
         {/* Hero Section */}
         <div className="relative w-screen h-screen">
           {/* Background Image */}
-          <Image src="/bg3.png" alt="Background" layout="fill" objectFit="cover" className="h-[720px] mt-[70px]" />
+          <Image src="/bg3.png" alt="Background" layout="fill" objectFit="cover" className="h-[720px] mt-[50px]" />
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
           {/* Content Section */}
           <motion.section 
-            className="absolute inset-0 flex items-center justify-center text-center px-6"
+            className="absolute inset-0 flex items-center justify-center text-center px-6 mt-[100px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}

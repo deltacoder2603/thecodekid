@@ -1,48 +1,156 @@
-'use client';
-
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Button } from './ui/button';
+import { Code2, GraduationCap, Trophy, Users } from 'lucide-react';
 
 const cardData = [
-  { color: 'bg-orange-400', title: 'Coding Clubs ', link: 'https://ui-layout.com/components/image-mousetrail', rotate: 'rotate-0',detail:"Student-led innovation hubs with weekly projects, hackathons, and peer learning.",button:"Start a Club"},
-  { color: 'bg-orange-300', title: 'Live Online Classes ', link: 'https://ui-layout.com/components/progressive-carousel', rotate: '-rotate-3',detail:"Grade 1–12: From Scratch to Python & AI, with bilingual support.",button:"View Curriculum" },
-  { color: 'bg-orange-200', title: 'Hackathons  ', link: 'https://ui-layout.com/components/drawer', rotate: 'rotate-3',detail:"Quarterly tech competitions with themes like Smart Cities & Health Tech.",button:"Host a Hackathon" },
-  { color: 'bg-orange-100', title: 'Olympiad Prep  ', link: 'https://ui-layout.com/components/globe', rotate: '-rotate-6',detail:"Win national rankings with expert-led workshops and mock tests.",button:"Train Students" },
+  { 
+    color: 'bg-orange-50', 
+    title: 'Coding Clubs', 
+    link: 'https://ui-layout.com/components/image-mousetrail', 
+    detail: "Student-led innovation hubs with weekly projects, hackathons, and peer learning.",
+    features: ["Weekly coding sessions", "Project showcases", "Peer mentoring", "Industry experts"],
+    button: "Start a Club",
+    icon: Code2,
+    stats: "500+ active clubs"
+  },
+  { 
+    color: 'bg-orange-50', 
+    title: 'Live Online Classes', 
+    link: 'https://ui-layout.com/components/progressive-carousel', 
+    detail: "Grade 1–12: From Scratch to Python & AI, with bilingual support.",
+    features: ["Live instruction", "Interactive coding", "1:1 mentoring", "Project-based"],
+    button: "View Curriculum",
+    icon: GraduationCap,
+    stats: "10k+ students"
+  },
+  { 
+    color: 'bg-orange-50', 
+    title: 'Hackathons', 
+    link: 'https://ui-layout.com/components/drawer', 
+    detail: "Quarterly tech competitions with themes like Smart Cities & Health Tech.",
+    features: ["24-hour events", "Expert judging", "Cool prizes", "Team building"],
+    button: "Host a Hackathon",
+    icon: Users,
+    stats: "100+ events"
+  },
+  { 
+    color: 'bg-orange-50', 
+    title: 'Olympiad Prep', 
+    link: 'https://ui-layout.com/components/globe', 
+    detail: "Win national rankings with expert-led workshops and mock tests.",
+    features: ["Mock tests", "Problem solving", "Competition prep", "Rankings"],
+    button: "Train Students",
+    icon: Trophy,
+    stats: "90% success rate"
+  },
 ];
 
-export default function Index() {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
 
+const cardVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 20
+  },
+  visible: { 
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
 
+export default function App() {
   return (
-    <main>
-      <section className='text-black w-full'>
-        <div className='flex justify-between px-16'>
-          <div className='grid gap-2'>
-            {cardData.map((item, index) => (
-              <figure key={index} className='sticky top-0 h-screen grid place-content-center'>
-                <article className={`${item.color} h-72 w-[30rem] rounded-lg ${item.rotate} p-4 grid place-content-center gap-4 shadow-lg`}>
-                  <h1 className='text-2xl font-semibold'>{item.title}</h1>
-                  <p>
-                    {item.detail}
-                  </p>
-                  <a
-                    href={item.link}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Button>{item.button}</Button>
-                  </a>
-                </article>
-              </figure>
-            ))}
-          </div>
+    <main className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div className="max-w-7xl w-full text-center">
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Our Programs Build{' '}
+            <span className="text-orange-500">Future-Ready Students</span>
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Empowering the next generation with cutting-edge technology education and hands-on experience
+          </p>
+        </motion.div>
 
-          <div className='sticky top-0 h-screen grid place-content-center'>
-            <h1 className='text-4xl px-8 mr-[100px] font-medium text-center tracking-tight leading-[120%]'>
-            Our Programs Build <br /> <span className='text-orange-500 font-bold'>Future-Ready Students</span>
-            </h1>
-          </div>
-        </div>
-      </section>
+        {/* Cards Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-6 lg:gap-8 justify-center"
+        >
+          {cardData.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ scale: 1.02 }}
+                className={`${item.color} rounded-xl p-8 shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 flex flex-col h-auto w-[300px] mx-auto`}
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className=" p-3 rounded-lg">
+                    <Icon className="w-6 h-6 text-gray-900" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-900/80  px-3 py-1 rounded-full">
+                    {item.stats}
+                  </span>
+                </div>
+
+                <h2 className="text-3xl font-bold text-orange-500 mb-3">
+                  {item.title}
+                </h2>
+                
+                <p className="text-gray-700 mb-6 flex-grow">
+                  {item.detail}
+                </p>
+
+                <div className="mb-6">
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                    Key Features
+                  </h3>
+                  <ul className="grid grid-cols-2 gap-2">
+                    {item.features.map((feature, idx) => (
+                      <li 
+                        key={idx}
+                        className="text-sm text-gray-700 bg-white px-3 py-1.5 rounded-xl"
+                      >
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Button 
+                  className="w-full bg-white/90 text-gray-900 hover:bg-white/100 transition-colors mt-auto"
+                  onClick={() => window.open(item.link, '_blank')}
+                >
+                  {item.button}
+                </Button>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </main>
   );
 }

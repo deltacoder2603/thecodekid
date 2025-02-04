@@ -79,7 +79,7 @@ export function ImpactSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <section className="py-20 bg-gradient-to-b from-background mb-[100px] to-secondary/20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16">
           See How We &apos; re <span className='text-orange-500̀'>Transforming Schools</span>

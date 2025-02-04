@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { LineShadowText } from "./ui/line-shadow-text";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const navLinks = [
@@ -27,19 +27,40 @@ const Navbar = () => {
   const shadowColor = theme.resolvedTheme === "dark" ? "white" : "black";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBenefitsOpen, setIsBenefitsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (isBenefitsOpen) setIsBenefitsOpen(false);
   };
 
   const toggleBenefitsMenu = () => {
     setIsBenefitsOpen(!isBenefitsOpen);
   };
 
+  // Close mobile menu when window is resized to desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+        setIsBenefitsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <nav className="fixed top-0 left-0 w-full flex items-center justify-between z-50 px-4 py-3 md:px-6 md:py-4 shadow-md bg-orange-100">
       {/* Logo */}
-      <Link href="/" className="text-balance text-3xl md:text-4xl font-semibold leading-none tracking-tighter">
+      <Link href="/" className="text-balance text-3xl md:text-4xl font-semibold leading-none tracking-tighter z-50">
         Code
         <LineShadowText className="italic" shadowColor={shadowColor}>
           Kid
@@ -55,32 +76,38 @@ const Navbar = () => {
               className="relative cursor-pointer"
               whileHover={{ scale: 1.05 }}
             >
-              <button onClick={toggleBenefitsMenu} className="flex items-center gap-1 hover:text-orange-500 transition-colors">
+              <button 
+                onClick={toggleBenefitsMenu} 
+                className="flex items-center gap-1 hover:text-orange-500 transition-colors"
+                aria-expanded={isBenefitsOpen}
+              >
                 {item.name} <ChevronDown className="w-4 h-4" />
               </button>
-              {isBenefitsOpen && (
-                <motion.ul 
-                  className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                >
-                  {item.dropdown.map((benefit, idx) => (
-                    <motion.li 
-                      key={idx} 
-                      className="px-4 py-2 hover:bg-gray-200 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <Link href={benefit.href}>{benefit.name}</Link>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              )}
+              <AnimatePresence>
+                {isBenefitsOpen && (
+                  <motion.ul 
+                    className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                  >
+                    {item.dropdown.map((benefit, idx) => (
+                      <motion.li 
+                        key={idx} 
+                        className="px-4 py-2 hover:bg-gray-200 transition-colors"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <Link href={benefit.href}>{benefit.name}</Link>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </motion.li>
           ) : (
             <motion.li 
               key={index}
-              whileHover={{ scale: 1.1, opacity: 1 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link href={item.href} className="hover:text-orange-500 transition-colors">
@@ -92,63 +119,84 @@ const Navbar = () => {
       </ul>
 
       {/* Mobile Menu Button */}
-      <button onClick={toggleMobileMenu} className="md:hidden text-gray-600 focus:outline-none">
+      <button 
+        onClick={toggleMobileMenu} 
+        className="md:hidden text-gray-600 focus:outline-none z-50"
+        aria-expanded={isMobileMenuOpen}
+      >
         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
       </button>
 
       {/* Mobile Navigation Links */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden absolute top-16 left-0 w-full bg-orange-100 shadow-lg rounded-b-lg max-h-[calc(100dvh - 4rem)] overflow-y-auto"
-        >
-          <ul className="flex flex-col space-y-2 md:space-y-4 p-4 md:p-6 text-gray-600 text-base md:text-lg font-semibold">
-            {navLinks.map((item, index) => (
-              item.dropdown ? (
-                <motion.li 
-                  key={index} 
-                  className="relative cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <button onClick={toggleBenefitsMenu} className="flex items-center gap-1 hover:text-orange-500 transition-colors">
-                    {item.name} <ChevronDown className="w-4 h-4" />
-                  </button>
-                  {isBenefitsOpen && (
-                    <motion.ul 
-                      className="ml-4 mt-2 bg-white shadow-lg rounded-lg py-2"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed top-16 left-0 w-full bg-orange-100 shadow-lg rounded-b-lg max-h-[calc(100vh-4rem)] overflow-y-auto"
+          >
+            <ul className="flex flex-col space-y-2 p-4 text-gray-600 text-base font-semibold">
+              {navLinks.map((item, index) => (
+                item.dropdown ? (
+                  <motion.li 
+                    key={index} 
+                    className="relative cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <button 
+                      onClick={toggleBenefitsMenu} 
+                      className="flex items-center gap-1 hover:text-orange-500 transition-colors w-full"
                     >
-                      {item.dropdown.map((benefit, idx) => (
-                        <motion.li 
-                          key={idx} 
-                          className="px-4 py-2 hover:bg-gray-200 transition-colors"
-                          whileHover={{ scale: 1.1 }}
+                      {item.name} <ChevronDown className="w-4 h-4" />
+                    </button>
+                    <AnimatePresence>
+                      {isBenefitsOpen && (
+                        <motion.ul 
+                          className="ml-4 mt-2 bg-white shadow-lg rounded-lg py-2"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
                         >
-                          <Link href={benefit.href} onClick={toggleMobileMenu}>{benefit.name}</Link>
-                        </motion.li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </motion.li>
-              ) : (
-                <motion.li 
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Link href={item.href} onClick={toggleMobileMenu} className="hover:text-orange-500 transition-colors">
-                    {item.name}
-                  </Link>
-                </motion.li>
-              )
-            ))}
-          </ul>
-        </motion.div>
-      )}
+                          {item.dropdown.map((benefit, idx) => (
+                            <motion.li 
+                              key={idx} 
+                              className="px-4 py-2 hover:bg-gray-200 transition-colors"
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              <Link 
+                                href={benefit.href} 
+                                onClick={toggleMobileMenu}
+                                className="block w-full"
+                              >
+                                {benefit.name}
+                              </Link>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
+                ) : (
+                  <motion.li 
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <Link 
+                      href={item.href} 
+                      onClick={toggleMobileMenu} 
+                      className="hover:text-orange-500 transition-colors block w-full"
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.li>
+                )
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

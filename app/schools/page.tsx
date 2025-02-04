@@ -52,67 +52,68 @@ function App() {
   return (
     <div>
       <Navbar />
-      <section className="relative px-4 py-20 sm:px-6 lg:px-8 max-w-7xl ">
-        {/* Background Image */}
-        <div className="absolute inset-0 w-screen h-screen">
-          <Image
-            src="/bg1.png"
-            alt="Background"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        </div>
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-8xl h-screen mx-auto overflow-hidden py-8 sm:py-5 lg:py-15 my-5 sm:my-10 lg:my-16">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src="/bg1.png"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          className="z-0"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative text-center mb-16 mt-[150px] ml-[110px] text-white"
-        >
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Grow your school with <span className='text-orange-500'>CodeKid</span>
-          </h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Upgrade your school with the best tech-based solutions. CodeKid &apos; s International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
-          </p>
-        </motion.div>
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative text-center mb-16 mt-32 px-4 text-white"
+      >
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          Grow your school with <span className='text-orange-500'>CodeKid</span>
+        </h1>
+        <p className="text-lg sm:text-xl max-w-3xl mx-auto">
+          Upgrade your school with the best tech-based solutions. CodeKid&apos;s International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
+        </p>
+      </motion.div>
 
-        {/* Stats Section */}
-        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 ml-[110px] mb-16 text-white">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center"
-            >
-              <h2 className="text-4xl font-bold text-orange-400">{stat.number}</h2>
-              <p className="font-medium">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
+      {/* Stats Section */}
+      <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 text-white px-4 sm:px-12">
+        {stats.map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-orange-400">{stat.number}</h2>
+            <p className="font-medium text-sm sm:text-base">{stat.label}</p>
+          </motion.div>
+        ))}
+      </div>
 
-        {/* Button */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative mx-auto block bg-orange-500 ml-[600px] text-white px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors"
-        >
-          Enquire Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
-        </motion.button>
-      </section>
-
+      {/* Button */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="relative mx-auto block bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors mt-10"
+      >
+        Enquire Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
+      </motion.button>
+    </section>
+    
       {/* Features Grid */}
       <section className="px-4 py-16 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold mt-[120px] text-center text-black mb-12"
+          className="text-3xl font-bold  text-center text-black mb-12"
         >
           Comprehensive Digital Learning <span className='text-orange-500'>Solutions</span>
         </motion.h2>

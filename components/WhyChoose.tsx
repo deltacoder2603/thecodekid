@@ -2,7 +2,7 @@ import { HoverEffect } from "./ui/card-hover-effect";
 
 export function WhyChoose() {
   return (
-    <>
+    <div>
     <p className='text-3xl pl-[50px] pt-[50px] font-bold'>
         Why Schools Partner With <span
           className="whitespace-pre-wrap text-3xl tracking-tighter text-orange-500 font-bold dark:text-white"
@@ -11,7 +11,7 @@ export function WhyChoose() {
     <div className="container mx-auto px-6 sm:px-6 lg:px-8 py-5"> {/* Use container and padding */}
       <HoverEffect items={projects} />
     </div>
-    </>
+    </div>
   );
 }
 

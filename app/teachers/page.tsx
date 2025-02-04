@@ -57,63 +57,73 @@ export default function Page() {
       <Navbar />
       <div className="flex flex-col min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center relative overflow-hidden">
-          <div className="absolute inset-0 w-full h-[720px] mt-[70px]">
-            <Image
-              src="/bg2.png"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-transparent" />
+        <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 md:px-8">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-[700px] sm:h-[600px] md:h-[720px] mt-[50px] md:mt-[70px]">
+        <Image
+          src="/bg2.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-100/50 to-transparent" />
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="relative z-10 container mx-auto px-4 py-16 sm:py-24"
+      >
+        <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          {/* Text Section */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="container mx-auto px-4 py-24 relative z-10"
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-center md:text-left"
           >
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                <h1 className="text-4xl lg:text-6xl font-bold text-orange-950 mb-6 leading-tight">
-                  Transform
-                  <span className="text-orange-500"> teaching </span>
-                  in your school
-                </h1>
-                <p className="text-lg text-orange-800 mb-6 leading-relaxed">
-                  CodeKid provides a Teacher Capability System which supports teachers with:
-                </p>
-                <ul className="list-disc list-inside text-orange-800 mb-6 space-y-2 text-base">
-                  <li>Latest ed-tech solutions to improve classroom experience and save their time</li>
-                  <li>
-                    Ready-made teaching resources, feedback and training sessions and teacher improvement toolkits by our
-                    CodeKid Academic experts
-                  </li>
-                  <li>Access to network of 50K+ excellent teachers across India</li>
-                </ul>
-                <Button
-                  size="lg"
-                  className="bg-orange-500 hover:bg-orange-600 text-white group transition-all duration-300"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </motion.div>
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="relative"
-              >
-              </motion.div>
-            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-950 mb-6 leading-tight">
+              Transform
+              <span className="text-orange-500"> teaching </span>
+              in your school
+            </h1>
+            <p className="text-base sm:text-lg text-orange-800 mb-6 leading-relaxed">
+              CodeKid provides a Teacher Capability System which supports teachers with:
+            </p>
+            <ul className="list-disc list-inside text-orange-800 mb-6 space-y-2 text-sm sm:text-base">
+              <li>Latest ed-tech solutions to improve classroom experience and save time</li>
+              <li>
+                Ready-made teaching resources, feedback, training sessions, and improvement toolkits by our
+                CodeKid Academic experts
+              </li>
+              <li>Access to a network of 50K+ excellent teachers across India</li>
+            </ul>
+            <Button
+              size="lg"
+              className="bg-orange-500 hover:bg-orange-600 text-white group transition-all duration-300"
+            >
+              Learn More
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </motion.div>
-        </section>
+
+          {/* Placeholder for Future Image/Visuals */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="w-full flex justify-center md:justify-end"
+          >
+            {/* Add an image or illustration here if needed */}
+          </motion.div>
+        </div>
+      </motion.div>
+    </section>
 
         {/* Stats Section */}
         <motion.section
