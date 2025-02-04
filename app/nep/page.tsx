@@ -1,13 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ChevronDown, BookOpen, GraduationCap, Brain } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
-import Link from "next/link"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -16,7 +15,13 @@ export default function Page() {
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative w-full min-h-screen flex items-center justify-center p-4 overflow-hidden">
-          <Image src="/bg4.png" alt="Background" layout="fill" objectFit="cover" className="absolute inset-0" />
+          <Image
+            src="/bg4.png"
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0"
+          />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -37,7 +42,7 @@ export default function Page() {
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white border-none"
               onClick={() => {
-                document.getElementById("key-highlights")?.scrollIntoView({ behavior: "smooth" })
+                document.getElementById("key-highlights")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               Explore Features
@@ -96,7 +101,7 @@ export default function Page() {
                   onClick={() =>
                     window.open(
                       "https://questplus.in/wp-content/uploads/2024/06/NEP-2020-National-Education-Policy-2020.pdf",
-                      "_blank",
+                      "_blank"
                     )
                   }
                 >
@@ -109,5 +114,5 @@ export default function Page() {
       </div>
       <Footer />
     </>
-  )
+  );
 }
