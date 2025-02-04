@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, ArrowRight, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
