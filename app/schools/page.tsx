@@ -76,7 +76,7 @@ function App() {
             Grow your school with <span className='text-orange-500'>CodeKid</span>
           </h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Upgrade your school with the best tech-based solutions. CodeKid's International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
+            Upgrade your school with the best tech-based solutions. CodeKid &apos; s International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
           </p>
         </motion.div>
 
