@@ -1,6 +1,7 @@
 import Link from "next/link"
+import Image from "next/image"
 import type { Event } from "@/types/Event"
-import type React from "react" // Import React
+import type React from "react"
 
 interface GridEventCardProps {
   event: Event
@@ -9,11 +10,13 @@ interface GridEventCardProps {
 const GridEventCard: React.FC<GridEventCardProps> = ({ event }) => {
   return (
     <div className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-      <div className="relative overflow-hidden">
-        <img
+      <div className="relative h-40 sm:h-48 md:h-52 overflow-hidden">
+        <Image
           src={event.image || "/placeholder.svg"}
           alt={event.title}
-          className="w-full h-40 sm:h-48 md:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
@@ -34,4 +37,3 @@ const GridEventCard: React.FC<GridEventCardProps> = ({ event }) => {
 }
 
 export default GridEventCard
-
