@@ -85,7 +85,7 @@ export default function Home() {
               </motion.div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image 
-                  src="https://images.unsplash.com/photo-1543269664-76bc3997d9ea?auto=format&fit=crop&w=800"
+                  src="/par1.png"
                   alt="Parent and child"
                   width={800}
                   height={400}
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <Image
-                src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800"
+                src="/par2.png"
                 alt="Student studying"
                 width={800}
                 height={400}
@@ -146,7 +146,7 @@ export default function Home() {
                 </Button>
               </motion.div>
               <Image
-                src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?auto=format&fit=crop&w=800"
+                src="/par3.png"
                 alt="Student with laptop"
                 width={800}
                 height={400}
