@@ -165,8 +165,8 @@ export function ImpactSection() {
               </AspectRatio>
               <div className="p-6">
                 <blockquote className="text-lg italic text-muted-foreground">
-                  "Thanks to this program, our students built an AI model to predict crop yields! 
-                  The impact on their understanding of technology and real-world applications has been incredible."
+                  &quot; Thanks to this program, our students built an AI model to predict crop yields! 
+                  The impact on their understanding of technology and real-world applications has been incredible. &quot;
                 </blockquote>
                 <div className="mt-4">
                   <p className="font-semibold">Dr. Sarah Mitchell</p>
