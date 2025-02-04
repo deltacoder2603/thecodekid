@@ -79,12 +79,11 @@ const AboutUs = () => {
             <h2 className="text-3xl font-semibold text-gray-800">What We Do</h2>
           </div>
           <ul className="space-y-4 text-gray-600 text-lg">
-            {[
-              "In-School Coding Clubs: Student-led clubs where seniors become 'Tech Captains,' guiding peers through hands-on projects in Scratch, Python, and AI.",
+            {["In-School Coding Clubs: Student-led clubs where seniors become 'Tech Captains,' guiding peers through hands-on projects in Scratch, Python, and AI.",
               "Live Online Classes: Grade-wise, NEP-aligned courses taught by coding experts. From block-based coding for young learners to advanced app development for teens.",
               "Hackathons & Competitions: Quarterly events with themes like 'Smart Cities' and 'Health Tech,' where students solve real-world problems."
-            ].map((item, index) => (
-              <li key={index} className="flex items-start">
+            ].map(item => (
+              <li key={item} className="flex items-start">
                 <span className="text-orange-500 mr-3 mt-1">•</span>
                 <span>{item}</span>
               </li>
@@ -101,12 +100,11 @@ const AboutUs = () => {
             <h2 className="text-3xl font-semibold text-gray-800">Our Core Values</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { title: 'Innovation', description: 'We turn "What if?" into "Whats next."' },
+            {[{ title: 'Innovation', description: 'We turn "What if?" into "Whats next."' },
               { title: 'Collaboration', description: 'Schools, students, and parents grow together.' },
               { title: 'Empathy', description: 'Every child learns differently—we adapt to their pace.' },
               { title: 'Fun', description: 'Learning to code should feel like play, not work!' }
-            ].map((value, index) => (
+            ].map(value => (
               <motion.div 
                 key={value.title}
                 className="bg-orange-50 p-6 rounded-lg border border-orange-100 hover:shadow-lg transition-shadow duration-300"
