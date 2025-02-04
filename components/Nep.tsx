@@ -7,7 +7,7 @@ export default function NEP2020Spotlight() {
     <Card className="w-full max-w-4xl mb-[100px] mx-auto overflow-hidden">
       <CardHeader className="bg-gradient-to-r from-orange-300 to-orange-600 text-white p-6">
         <CardTitle className="text-2xl md:text-3xl font-bold text-center">
-          Your School's Gateway to NEP 2020 Success
+          Your School &apos; s Gateway to NEP 2020 Success
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6">
