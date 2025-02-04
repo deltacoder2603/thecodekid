@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, ArrowRight, Users, Laptop, GraduationCap, Menu, X, Quote } from 'lucide-react';
+import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, ArrowRight, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -14,7 +14,6 @@ interface FeatureCardProps {
   
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const stats = [
