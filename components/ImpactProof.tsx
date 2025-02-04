@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Users, Trophy, School, Play } from 'lucide-react';
@@ -103,11 +104,13 @@ export function ImpactSection() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {projects.map((project, index) => (
                   <Card key={index} className="group overflow-hidden">
-                    <AspectRatio ratio={4 / 3} className="bg-muted">
-                      <img
+                    <AspectRatio ratio={4 / 3} className="bg-muted relative">
+                      <Image
                         src={project.image}
                         alt={project.title}
-                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 50vw"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="text-white text-center p-2">
@@ -127,10 +130,12 @@ export function ImpactSection() {
             <Card className="overflow-hidden">
               <AspectRatio ratio={16 / 9} className="bg-muted relative">
                 {/* Thumbnail */}
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1000"
                   alt="Video thumbnail"
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                 />
 
                 {/* Play Button */}
