@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap,ChevronLeft, Users, BookOpen, Laptop, Award, School, MapPin, Building2, Users2, Play, Gamepad, BookOpenCheck, Trophy, Globe, ChevronRight } from "lucide-react";
+import { GraduationCap, Users, Laptop, Award, School, MapPin, Building2, Users2, Play, Gamepad, BookOpenCheck, Trophy, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
@@ -28,14 +28,6 @@ export default function Home() {
       videoUrl: "https://www.youtube.com/watch?v=znCgeHvmT0w"
     }
   ];
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   return (
     <>
