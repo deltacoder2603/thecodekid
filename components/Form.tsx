@@ -181,7 +181,7 @@ const Form: React.FC<FormProps> = () => {
             <span className='text-orange-500'>Get Started</span> in 3 Simple Steps
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join our community of innovative educators and transform your school's tech education
+            Join our community of innovative educators and transform your school &apos; s tech education
           </p>
         </div>
 
