@@ -5,13 +5,14 @@ import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, 
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link'; // Import Link from next/link
+import Image from 'next/image'; // Import Image from next/image
 
 interface FeatureCardProps {
-    icon: any;
-    title: string;
-    description: string;
-  }
-  
+  icon: any;
+  title: string;
+  description: string;
+}
 
 function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -50,56 +51,61 @@ function App() {
   };
 
   return (
-      <div>
-       <Navbar />
-       <section className="relative px-4 py-20 sm:px-6 lg:px-8 max-w-7xl ">
-  {/* Background Image */}
-  <div className="absolute inset-0 w-screen h-screen">
-  <img src="/bg1.png" alt="Background" className="w-full h-full object-cover" />
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-</div>
+    <div>
+      <Navbar />
+      <section className="relative px-4 py-20 sm:px-6 lg:px-8 max-w-7xl ">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-screen h-screen">
+          <Image
+            src="/bg1.png"
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
 
-  {/* Content */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    className="relative text-center mb-16 mt-[150px] ml-[110px] text-white"
-  >
-    <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-      Grow your school with <span className='text-orange-500'>CodeKid</span>
-    </h1>
-    <p className="text-xl max-w-3xl mx-auto">
-      Upgrade your school with the best tech-based solutions. CodeKid's International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
-    </p>
-  </motion.div>
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative text-center mb-16 mt-[150px] ml-[110px] text-white"
+        >
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
+            Grow your school with <span className='text-orange-500'>CodeKid</span>
+          </h1>
+          <p className="text-xl max-w-3xl mx-auto">
+            Upgrade your school with the best tech-based solutions. CodeKid's International Standard Curriculum and well-researched pedagogy ensure visible growth in student learning outcomes.
+          </p>
+        </motion.div>
 
-  {/* Stats Section */}
-  <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 ml-[110px]  mb-16 text-white">
-    {stats.map((stat, index) => (
-      <motion.div
-        key={stat.label}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="text-center"
-      >
-        <h2 className="text-4xl font-bold text-orange-400">{stat.number}</h2>
-        <p className="font-medium">{stat.label}</p>
-      </motion.div>
-    ))}
-  </div>
+        {/* Stats Section */}
+        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8 ml-[110px]  mb-16 text-white">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="text-center"
+            >
+              <h2 className="text-4xl font-bold text-orange-400">{stat.number}</h2>
+              <p className="font-medium">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
 
-  {/* Button */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    className="relative mx-auto block bg-orange-500 ml-[600px]  text-white px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors"
-  >
-    Enquire Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
-  </motion.button>
-</section>
-
+        {/* Button */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative mx-auto block bg-orange-500 ml-[600px]  text-white px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors"
+        >
+          Enquire Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
+        </motion.button>
+      </section>
 
       {/* Features Grid */}
       <section className="px-4 py-16 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -158,7 +164,7 @@ function App() {
           >
             What Successful School Owners Say <span className='text-orange-500'>About Us</span>
           </motion.h2>
-          
+
           <div className="relative">
             <motion.div
               key={currentTestimonial}
@@ -209,9 +215,11 @@ function App() {
             viewport={{ once: true }}
             className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1000"
               alt="Teachers in training"
+              width={500}
+              height={300}
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
@@ -219,9 +227,9 @@ function App() {
               <p className="text-gray-600">
                 We make every teacher in our partner schools a Super Teacher. We provide them with the resources and training required to upskill them to deliver excellent classroom learning experiences.
               </p>
-              <button className="mt-4 text-orange-500 font-medium hover:text-orange-600">
+              <Link href="/teacher-capability" className="mt-4 text-orange-500 font-medium hover:text-orange-600">
                 Know more
-              </button>
+              </Link>
             </div>
           </motion.div>
 
@@ -232,9 +240,11 @@ function App() {
             transition={{ delay: 0.1 }}
             className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&q=80&w=1000"
               alt="Students learning"
+              width={500}
+              height={300}
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
@@ -242,9 +252,9 @@ function App() {
               <p className="text-gray-600">
                 We provide an international standard education with new-age learning methods. We build 5 key skills required for students to succeed in life.
               </p>
-              <button className="mt-4 text-orange-500 font-medium hover:text-orange-600">
+              <Link href="/student-development" className="mt-4 text-orange-500 font-medium hover:text-orange-600">
                 Know more
-              </button>
+              </Link>
             </div>
           </motion.div>
 
@@ -255,9 +265,11 @@ function App() {
             transition={{ delay: 0.2 }}
             className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=1000"
               alt="Technology in education"
+              width={500}
+              height={300}
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
@@ -265,9 +277,9 @@ function App() {
               <p className="text-gray-600">
                 CodeKid school system built on robust world-class technology upgrades experience for your school stakeholders. We have best-in-class apps for each stakeholder with unmatched benefits.
               </p>
-              <button className="mt-4 text-orange-500 font-medium hover:text-orange-600">
+              <Link href="/technology" className="mt-4 text-orange-500 font-medium hover:text-orange-600">
                 Know more
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -299,9 +311,11 @@ function App() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=1000"
                 alt="Modern classroom"
+                width={600}
+                height={400}
                 className="rounded-lg shadow-xl"
               />
             </motion.div>
@@ -314,18 +328,18 @@ function App() {
 }
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
-    return (
-      <motion.div
-        whileHover={{ y: -5 }}
-        className="bg-white p-6 rounded-xl shadow-lg transition-shadow hover:shadow-xl"
-      >
-        <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
-          {icon}
-        </div>
-        <h3 className="text-xl font-semibold text-orange-600 mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </motion.div>
-    );
-  }
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="bg-white p-6 rounded-xl shadow-lg transition-shadow hover:shadow-xl"
+    >
+      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+        {icon}
+      </div>
+      <h3 className="text-xl font-semibold text-orange-600 mb-2">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </motion.div>
+  );
+}
 
 export default App;
