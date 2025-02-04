@@ -8,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReactPlayer from "react-player";
+import Link from "next/link";
+import Image from "next/image";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -34,35 +36,35 @@ export default function Home() {
     <Navbar/>
     <div className="min-h-screen bg-gradient-to-b bg-white">
       {/* Hero Section */}
-<div className="relative w-screen h-screen">
-  {/* Background Image */}
-  <img src="/bg3.png" alt="Background" className="w-full h-[720px] mt-[70px] object-cover" />
-  
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+      <div className="relative w-screen h-screen">
+        {/* Background Image */}
+        <Image src="/bg3.png" alt="Background" layout="fill" objectFit="cover" className="h-[720px] mt-[70px]" />
+        
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
 
-  {/* Content Section */}
-  <motion.section 
-    className="absolute inset-0 flex items-center justify-center text-center px-6"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-  >
-    <div className="max-w-2xl text-white space-y-6">
-      <h1 className="text-5xl font-bold leading-tight mt-[-100px] text-white">
-        Choose <span className="text-orange-500">CodeKid</span> Powered School for Your Child
-      </h1>
-      <p className="text-lg text-orange-100 font-bold">
-        Unlock a new world of opportunities for your child with International Standard education, extra-curricular activities, and much more.
-      </p>
-      <div className="flex justify-center">
-        <Button size="lg" className="bg-orange-500 rounder-xl hover:bg-orange-600">
-          Find Schools Near You
-        </Button>
+        {/* Content Section */}
+        <motion.section 
+          className="absolute inset-0 flex items-center justify-center text-center px-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="max-w-2xl text-white space-y-6">
+            <h1 className="text-5xl font-bold leading-tight mt-[-100px] text-white">
+              Choose <span className="text-orange-500">CodeKid</span> Powered School for Your Child
+            </h1>
+            <p className="text-lg text-orange-100 font-bold">
+              Unlock a new world of opportunities for your child with International Standard education, extra-curricular activities, and much more.
+            </p>
+            <div className="flex justify-center">
+              <Button size="lg" className="bg-orange-500 rounder-xl hover:bg-orange-600">
+                Find Schools Near You
+              </Button>
+            </div>
+          </div>
+        </motion.section>
       </div>
-    </div>
-  </motion.section>
-</div>
 
 
       {/* Salute to Parents Section */}
