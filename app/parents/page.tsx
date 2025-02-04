@@ -235,11 +235,11 @@ export default function Home() {
               </div>
 
               <div className="space-y-6">
-                <div className="text-6xl text-orange-500">"</div>
+                <div className="text-6xl text-orange-500">&quot;</div>
                 <p className="text-lg text-orange-800">
                   {testimonials[0].content}
                 </p>
-                <div className="text-6xl text-orange-500 text-right">"</div>
+                <div className="text-6xl text-orange-500 text-right">&quot;</div>
                 <div className="pt-4">
                   <h3 className="text-xl mt-[-50px] font-semibold text-orange-950">
                     {testimonials[0].name}
