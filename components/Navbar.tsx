@@ -39,7 +39,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full flex items-center justify-between z-50 px-4 py-3 md:px-6 md:py-4 shadow-md bg-orange-100">
       {/* Logo */}
-      <a href="/">
+      <Link href="/"></Link>
+
         <h1 className="text-balance text-3xl md:text-4xl font-semibold leading-none tracking-tighter">
           Code
           <LineShadowText className="italic" shadowColor={shadowColor}>
