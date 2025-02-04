@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react"; // Removed Link import
+import { useState } from "react";
 
 export const HoverEffect = ({
   items,
@@ -9,7 +9,7 @@ export const HoverEffect = ({
   items: {
     title: string;
     description: string;
-  }[]; // Removed link from type definition
+  }[];
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -17,13 +17,13 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 py-10 ...",
+        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 py-10",
         className
       )}
     >
       {items.map((item, idx) => (
-        <div // Changed to a div
-          key={item.title} // Use a suitable key (title is likely unique)
+        <div
+          key={item.title}
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -49,7 +49,7 @@ export const HoverEffect = ({
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </div> // Closing div tag
+        </div>
       ))}
     </div>
   );
@@ -65,7 +65,8 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-[250px] shadow-2xl w-[300px] p-4 overflow-hidden bg-white border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20", 
+        "rounded-2xl h-[250px] shadow-2xl w-[300px] p-4 overflow-hidden bg-white border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        className // className is now used in the cn function
       )}
     >
       <div className="relative z-50">
@@ -74,7 +75,6 @@ export const Card = ({
     </div>
   );
 };
-
 
 export const CardTitle = ({
   className,
@@ -89,6 +89,7 @@ export const CardTitle = ({
     </h4>
   );
 };
+
 export const CardDescription = ({
   className,
   children,
@@ -100,7 +101,7 @@ export const CardDescription = ({
     <p
       className={cn(
         "mt-8 text-black tracking-wide leading-relaxed text-sm",
-        className
+        className // className is now used in the cn function
       )}
     >
       {children}
