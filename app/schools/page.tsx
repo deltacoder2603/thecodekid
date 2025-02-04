@@ -5,7 +5,6 @@ import { Star, MonitorSmartphone, BookOpen, Gamepad, ChevronLeft, ChevronRight, 
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Link from 'next/link'; 
 import Image from 'next/image'; 
 
 interface FeatureCardProps {
