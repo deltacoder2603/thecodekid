@@ -131,7 +131,7 @@ export function ImpactSection() {
               <AspectRatio ratio={16 / 9} className="bg-muted relative">
                 {/* Thumbnail */}
                 <Image
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1000"
+                  src="/dum1.png"
                   alt="Video thumbnail"
                   fill
                   className="object-cover"
