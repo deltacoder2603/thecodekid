@@ -82,7 +82,7 @@ export function ImpactSection() {
     <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16">
-          See How We're <span className='text-orange-500̀'>Transforming Schools</span>
+          See How We &apos; re <span className='text-orange-500̀'>Transforming Schools</span>
         </h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
