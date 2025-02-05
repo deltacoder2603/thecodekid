@@ -17,38 +17,47 @@ export default function Hero() {
   return (
     // Add pt-16 to account for fixed navbar height
     <div className="relative w-full min-h-screen flex items-center justify-center text-white overflow-hidden pt-16">
-      {/* Background Video Container */}
-      <div className="absolute inset-0 -z-10"> {/* Keep video behind everything */}
+      {/* Background Media Container */}
+      <div className="absolute inset-0 -z-10"> {/* Keep background behind everything */}
         <div className="relative w-full h-full">
-          <ReactPlayer
-            url="/bg-video.mp4"
-            playing
-            loop
-            muted
-            width="100%"
-            height="100%"
-            className="!absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
-            style={{
-              minWidth: '100%',
-              minHeight: '100%',
-              width: 'auto',
-              height: 'auto'
-            }}
-            config={{
-              file: {
-                attributes: {
-                  playsInline: true,
-                  style: {
-                    objectFit: 'cover',
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    top: '0',
-                    left: '0'
+          {/* Show video on larger screens */}
+          <div className="hidden sm:block w-full h-full">
+            <ReactPlayer
+              url="/bg-video.mp4"
+              playing
+              loop
+              muted
+              width="100%"
+              height="100%"
+              className="!absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full w-auto h-auto object-cover"
+              style={{
+                minWidth: '100%',
+                minHeight: '100%',
+                width: 'auto',
+                height: 'auto'
+              }}
+              config={{
+                file: {
+                  attributes: {
+                    playsInline: true,
+                    style: {
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: '100%',
+                      position: 'absolute',
+                      top: '0',
+                      left: '0'
+                    }
                   }
                 }
-              }
-            }}
+              }}
+            />
+          </div>
+          {/* Show image on smaller screens */}
+          <img 
+            src="/bgsmall.png" 
+            alt="Background" 
+            className="block sm:hidden w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
         </div>
@@ -75,7 +84,7 @@ export default function Hero() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row mt-[30px] justify-center gap-4">
+        <div className="mt-[50px] sm:mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <button className="bg-orange-500 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg shadow-lg hover:bg-orange-600 transition-colors text-sm sm:text-base">
             Schedule a Free Demo →
           </button>

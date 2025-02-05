@@ -44,6 +44,11 @@ const projects = [
     image: '/proj3.png',
     author: 'Learning Lions',
   },
+  {
+    title: 'Fitness Tracker Pro',
+    image: '/proj4.png',
+    author: 'Health Hub',
+  },
 ];
 
 function AnimatedCounter({ value, suffix = '' }: { value: number; suffix?: string }) {

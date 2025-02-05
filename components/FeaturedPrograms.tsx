@@ -96,7 +96,7 @@ export default function App() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-6 lg:gap-8 justify-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto"
         >
           {cardData.map((item, index) => {
             const Icon = item.icon;
@@ -105,18 +105,18 @@ export default function App() {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ scale: 1.02 }}
-                className={`${item.color} rounded-xl p-8 shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 flex flex-col h-auto w-[300px] mx-auto`}
+                className={`${item.color} rounded-xl p-6 lg:p-8 shadow-lg border border-white/20 hover:shadow-xl transition-shadow duration-300 flex flex-col h-full w-full`}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className=" p-3 rounded-lg">
+                  <div className="p-3 rounded-lg">
                     <Icon className="w-6 h-6 text-gray-900" />
                   </div>
-                  <span className="text-sm font-medium text-gray-900/80  px-3 py-1 rounded-full">
+                  <span className="text-sm font-medium text-gray-900/80 px-3 py-1 rounded-full">
                     {item.stats}
                   </span>
                 </div>
 
-                <h2 className="text-3xl font-bold text-orange-500 mb-3">
+                <h2 className="text-2xl lg:text-3xl font-bold text-orange-500 mb-3">
                   {item.title}
                 </h2>
                 
