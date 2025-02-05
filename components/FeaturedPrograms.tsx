@@ -1,9 +1,20 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Button } from './ui/button';
-import { Code2, GraduationCap, Trophy, Users } from 'lucide-react';
+import { Code2, GraduationCap, Trophy, Users, LucideIcon } from 'lucide-react';
 
-const cardData = [
+interface CardData {
+  color: string;
+  title: string;
+  link: string;
+  detail: string;
+  features: string[];
+  button: string;
+  icon: LucideIcon;
+  stats: string;
+}
+
+const cardData: CardData[] = [
   { 
     color: 'bg-orange-50', 
     title: 'Coding Clubs', 
@@ -46,7 +57,7 @@ const cardData = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -56,7 +67,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { 
     opacity: 0,
     y: 20
@@ -71,7 +82,18 @@ const cardVariants = {
   }
 };
 
-export default function App() {
+const App: React.FC = () => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      formElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
       <div className="max-w-7xl w-full text-center">
@@ -82,7 +104,7 @@ export default function App() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
             Our Programs Build{' '}
             <span className="text-orange-500">Future-Ready Students</span>
           </h1>
@@ -141,8 +163,8 @@ export default function App() {
                 </div>
 
                 <Button 
-                  className="w-full bg-white/90 text-gray-900 hover:bg-white/100 transition-colors mt-auto"
-                  onClick={() => window.open(item.link, '_blank')}
+                  className="w-full bg-orange-400 text-gray-900 hover:bg-orange-500 transition-colors mt-auto"
+                  onClick={handleButtonClick}
                 >
                   {item.button}
                 </Button>
@@ -153,4 +175,6 @@ export default function App() {
       </div>
     </main>
   );
-}
+};
+
+export default App;

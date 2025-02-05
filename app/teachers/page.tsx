@@ -11,6 +11,7 @@ import { useInView } from "react-intersection-observer"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { FaBookOpen, FaChalkboardTeacher, FaUsers } from "react-icons/fa";
+import Link from "next/link";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -103,13 +104,13 @@ export default function Page() {
               </li>
               <li>Access to a network of 50K+ excellent teachers across India</li>
             </ul>
-            <Button
+            <Link href="/contact"><Button
               size="lg"
               className="bg-orange-500 hover:bg-orange-600 text-white group transition-all duration-300"
             >
               Learn More
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            </Button></Link>
           </motion.div>
 
           {/* Placeholder for Future Image/Visuals */}
@@ -172,9 +173,9 @@ export default function Page() {
                 <p className="text-lg text-orange-800 mb-6">
                   At CodeKid Partner Schools, every teacher is skilled and certified
                 </p>
-                <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
+                <Link href="/contact"><Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
                   Know More
-                </Button>
+                </Button></Link>
               </motion.div>
               <div className="text-white py-12 px-6 md:px-16 lg:px-32 flex flex-col items-center text-center">
                 <div className="flex flex-col md:flex-row gap-8">

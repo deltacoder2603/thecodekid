@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Download, BookOpen, Brain, Laptop } from "lucide-react"
+import Link from "next/link"
 
 export default function NEP2020Spotlight() {
   return (
@@ -59,10 +60,10 @@ export default function NEP2020Spotlight() {
         </div>
       </CardContent>
       <CardFooter className="bg-gray-50 p-6 flex justify-center">
-        <Button className="w-full sm:w-auto" size="lg">
+        <Link href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf"><Button className="w-full sm:w-auto" size="lg">
           <Download className="w-5 h-5 mr-2" />
           Download Free NEP Compliance Checklist
-        </Button>
+        </Button></Link>
       </CardFooter>
     </Card>
   )

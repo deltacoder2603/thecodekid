@@ -4,10 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { LineShadowText } from "./ui/line-shadow-text";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-const navLinks = [
+interface DropdownItem {
+  name: string;
+  href: string;
+}
+
+interface NavLink {
+  name: string;
+  href?: string;
+  dropdown?: DropdownItem[];
+}
+
+const navLinks: NavLink[] = [
   { name: "About", href: "/about" },
   { 
     name: "Benefits", 
@@ -22,29 +33,60 @@ const navLinks = [
   { name: "Contact Us", href: "/contact" } 
 ];
 
-const Navbar = () => {
-  const theme = useTheme();
-  const shadowColor = theme.resolvedTheme === "dark" ? "white" : "black";
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isBenefitsOpen, setIsBenefitsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+const Navbar: React.FC = () => {
+  const { resolvedTheme } = useTheme();
+  const shadowColor = resolvedTheme === "dark" ? "white" : "black";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isBenefitsOpen, setIsBenefitsOpen] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const toggleMobileMenu = () => {
+  // Handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current && 
+        !dropdownRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsBenefitsOpen(false);
+      }
+    };
+
+    // Handle scroll
+    const handleScroll = (): void => {
+      if (isBenefitsOpen) {
+        setIsBenefitsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isBenefitsOpen]);
+
+  const toggleMobileMenu = (): void => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     if (isBenefitsOpen) setIsBenefitsOpen(false);
   };
 
-  const toggleBenefitsMenu = () => {
+  const toggleBenefitsMenu = (): void => {
     setIsBenefitsOpen(!isBenefitsOpen);
   };
 
   // Close mobile menu when window is resized to desktop size
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       if (window.innerWidth >= 768) {
         setIsMobileMenuOpen(false);
         setIsBenefitsOpen(false);
@@ -61,7 +103,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full flex items-center justify-between z-50 px-4 py-3 md:px-6 md:py-4 shadow-md bg-orange-100">
       {/* Logo */}
       <Link href="/" className="text-balance text-3xl md:text-4xl font-semibold leading-none tracking-tighter z-50">
-        Code
+       TheCode
         <LineShadowText className="italic" shadowColor={shadowColor}>
           Kid
         </LineShadowText>
@@ -77,6 +119,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
             >
               <button 
+                ref={buttonRef}
                 onClick={toggleBenefitsMenu} 
                 className="flex items-center gap-1 hover:text-orange-500 transition-colors"
                 aria-expanded={isBenefitsOpen}
@@ -86,6 +129,7 @@ const Navbar = () => {
               <AnimatePresence>
                 {isBenefitsOpen && (
                   <motion.ul 
+                    ref={dropdownRef}
                     className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -110,7 +154,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link href={item.href} className="hover:text-orange-500 transition-colors">
+              <Link href={item.href ?? '/'} className="hover:text-orange-500 transition-colors">
                 {item.name}
               </Link>
             </motion.li>
@@ -184,7 +228,7 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                   >
                     <Link 
-                      href={item.href} 
+                      href={item.href ?? '/'} 
                       onClick={toggleMobileMenu} 
                       className="hover:text-orange-500 transition-colors block w-full"
                     >

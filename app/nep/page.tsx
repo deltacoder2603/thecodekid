@@ -179,19 +179,13 @@ export default function Page() {
               </p>
 
               <div className="text-center space-y-4">
-                <h3 className="text-xl font-semibold">Click to get a Free PDF about National Education Policy 2020</h3>
-                <Button
+                <h3 className="text-xl font-semibold mb-[20px]">Click to get a Free PDF about National Education Policy 2020</h3>
+                <Link href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf"><Button
                   size="lg"
                   className="bg-orange-500 hover:bg-orange-600 text-white"
-                  onClick={() =>
-                    window.open(
-                      "https://questplus.in/wp-content/uploads/2024/06/NEP-2020-National-Education-Policy-2020.pdf",
-                      "_blank"
-                    )
-                  }
                 >
                   National Education Policy 2020
-                </Button>
+                </Button></Link>
               </div>
             </div>
           </div>

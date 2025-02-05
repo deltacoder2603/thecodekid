@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Image from 'next/image'; 
+import Link from 'next/link';
 
 interface FeatureCardProps {
   icon: React.ReactNode; // Updated to accept React nodes
@@ -98,13 +99,13 @@ function App() {
       </div>
 
       {/* Button */}
-      <motion.button
+      <Link href="/contact"><motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="relative mx-auto block bg-orange-500 text-white px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors mt-10"
       >
         Enquire Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
-      </motion.button>
+      </motion.button></Link>
     </section>
     
       {/* Features Grid */}
@@ -223,13 +224,13 @@ function App() {
               <p className="text-gray-600 mb-8">
                 CodeKid - School Transformation Solutions. Grow your school with help from our experts with academic and admission solutions that will transform your school.
               </p>
-              <motion.button
+              <Link href="/contact"><motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-orange-500 text-white px-8 py-3 rounded-full font-medium hover:bg-orange-600 transition-colors"
               >
                 Check Our Solutions
-              </motion.button>
+              </motion.button></Link>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -237,13 +238,12 @@ function App() {
               viewport={{ once: true }}
             >
               <Image
-   src="/dum2.png"
-   alt="Modern classroom"
-   width={600}
-   height={400}
-   className="rounded-lg shadow-xl" 
-/>
-
+             src="/dum2.png"
+             alt="Modern classroom"
+             width={600}
+             height={400}
+             className="rounded-lg shadow-xl" 
+             /> 
             </motion.div>
           </div>
         </div>

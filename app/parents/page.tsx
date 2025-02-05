@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ReactPlayer from "react-player";
 import Image from "next/image";
+import Link from "next/link";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -56,9 +57,9 @@ export default function Home() {
                 Unlock a new world of opportunities for your child with International Standard education, extra-curricular activities, and much more.
               </p>
               <div className="flex justify-center">
-                <Button size="lg" className="bg-orange-500 rounder-xl hover:bg-orange-600">
+                <Link href="/contact"><Button size="lg" className="bg-orange-500 rounder-xl hover:bg-orange-600">
                   Find Schools Near You
-                </Button>
+                </Button></Link>
               </div>
             </div>
           </motion.section>

@@ -27,6 +27,7 @@ export default function Home() {
         <ImpactSection />
       </Suspense>
       <NEP2020Spotlight />
+      {/* Ensure Form has an ID for smooth scrolling */}
       <Form id="contact-form" />
       <Footer />
     </>
